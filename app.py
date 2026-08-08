@@ -1,10 +1,7 @@
 from __future__ import annotations
-
 import hashlib
-
 import pandas as pd
 import streamlit as st
-
 from config import (
     APP_TITLE,
     EDITABLE_ADAPTED_COLUMNS,
