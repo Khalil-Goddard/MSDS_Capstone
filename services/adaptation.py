@@ -1,13 +1,10 @@
 from __future__ import annotations
-
 from typing import Any
-
 import pandas as pd
-
 from config import ORDER_COLUMN, STOPLIGHT_ID_COLUMN, SURVEY_ID_COLUMN
 from survey_adaptation_engine import ContextInput, SurveyAdaptationEngine
 
-
+# Runs survey adaptations model using the selected context / inputs
 def run_adaptation(
     engine: SurveyAdaptationEngine,
     base_survey_id: int,
@@ -31,7 +28,7 @@ def run_adaptation(
         **parameters,
     )
 
-
+# merges the model recommendations with the uploades survey
 def merge_adaptation_with_upload(
     uploaded: pd.DataFrame,
     adapted_records: list[dict[str, Any]],
