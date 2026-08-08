@@ -1,0 +1,5 @@
+﻿survey_definition_id,title,country,language,population_type,focus,organization_type,comparison_group,context_score,country_score,language_score,population_type_score,focus_score,organization_type_score,question_count
+259,Semáforo Educativo de Estudiantes -V2,Paraguay,Spanish,students,education,educational organization,educational;population;focus,1.0,1.0,1.0,1.0,1.0,1.0,36
+40,Semáforo Educativo de Docentes,Paraguay,Spanish,teachers,education,educational organization,educational;population;focus,0.75,1.0,1.0,0.0,1.0,1.0,31
+258,Semáforo Educativo de Directores - V2,Paraguay,Spanish,school directors;directors,education,educational organization,educational;population;focus,0.75,1.0,1.0,0.0,1.0,1.0,29
+90,Semáforo Ambiental,Paraguay,Spanish,general,environment,NGO,environmental;focus,0.3,1.0,1.0,0.0,0.0,0.0,10

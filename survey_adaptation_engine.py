@@ -34,7 +34,6 @@ DEFAULT_WEIGHTS = {
     "organization_type": 0.20,
 }
 
-ALIASES = {
     "usa": "united states",
     "us": "united states",
     "u s": "united states",
@@ -226,19 +225,10 @@ class SurveyAdaptationEngine:
 
     @staticmethod
     def _read_csv(path: Path) -> list[dict[str, str]]:
-        """Read CSV data using common encodings used by the project files."""
         if not path.exists():
             raise FileNotFoundError(path)
-
-        last_error: UnicodeDecodeError | None = None
-        for encoding in ("utf-8-sig", "cp1252", "latin-1"):
-            try:
-                with path.open("r", encoding=encoding, newline="") as handle:
-                    return list(csv.DictReader(handle))
-            except UnicodeDecodeError as error:
-                last_error = error
-
-        raise ValueError(f"Unable to determine CSV encoding for {path}") from last_error
+        with path.open("r", encoding="utf-8-sig", newline="") as handle:
+            return list(csv.DictReader(handle))
 
     @staticmethod
     def _group_rows_by_survey(
