@@ -24,24 +24,24 @@ from survey_adaptation_engine import SurveyAdaptationEngine
 
 st.set_page_config(page_title=APP_TITLE, page_icon="📝", layout="wide")
 
-
+# Load and cache survey adaptation engine
 @st.cache_resource(show_spinner="Loading survey adaptation model...")
 def load_engine() -> SurveyAdaptationEngine:
     return SurveyAdaptationEngine(MASTER_DATA_PATH, REFERENCE_CONTEXTS_PATH)
 
-
+# Load and cache the reference context
 @st.cache_data
 def load_context_data() -> pd.DataFrame:
     return load_reference_contexts(REFERENCE_CONTEXTS_PATH)
 
-
+# create uniqe file signature of the uploaded survey
 def file_signature(uploaded_file) -> str:
     uploaded_file.seek(0)
     digest = hashlib.sha256(uploaded_file.getvalue()).hexdigest()
     uploaded_file.seek(0)
     return digest
 
-
+# Create progress visual in streamlit UI 
 def render_progress(active_step: int) -> None:
     labels = ["Upload", "Configure", "Adapt", "Review", "Download"]
     columns = st.columns(len(labels))
