@@ -1,13 +1,12 @@
 from __future__ import annotations
-
 from io import BytesIO
 from pathlib import Path
-
 import pandas as pd
-
 from config import REQUIRED_UPLOAD_COLUMNS, SURVEY_ID_COLUMN
 
 
+
+# Loads uploaded survey file into a Datframe
 def load_uploaded_survey(uploaded_file) -> pd.DataFrame:
     extension = Path(uploaded_file.name).suffix.lower()
     if extension == ".csv":
@@ -26,7 +25,7 @@ def load_uploaded_survey(uploaded_file) -> pd.DataFrame:
 
     raise ValueError("Unsupported file type. Upload CSV, XLSX, or XLS.")
 
-
+# checks that the uploaded survey contains required data
 def validate_uploaded_survey(dataframe: pd.DataFrame) -> tuple[list[str], int | None]:
     errors: list[str] = []
     if dataframe.empty:
@@ -49,11 +48,11 @@ def validate_uploaded_survey(dataframe: pd.DataFrame) -> tuple[list[str], int | 
 
     return errors, int(ids[0])
 
-
+# Converts the DF into csv in preparation for download
 def dataframe_to_csv(dataframe: pd.DataFrame) -> bytes:
     return dataframe.to_csv(index=False).encode("utf-8-sig")
 
-
+# Converts DF into an Excel file
 def dataframe_to_excel(dataframe: pd.DataFrame) -> bytes:
     output = BytesIO()
     with pd.ExcelWriter(output, engine="openpyxl") as writer:
