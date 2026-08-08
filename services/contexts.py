@@ -1,8 +1,6 @@
 from __future__ import annotations
-
 import re
 from pathlib import Path
-
 import pandas as pd
 
 CONTEXT_COLUMNS = [
@@ -13,7 +11,7 @@ CONTEXT_COLUMNS = [
     "organization_type",
 ]
 
-
+# loads reference survey 
 def load_reference_contexts(path: Path) -> pd.DataFrame:
     dataframe = pd.read_csv(path, encoding="utf-8-sig")
     missing = set(CONTEXT_COLUMNS + ["survey_definition_id"]) - set(dataframe.columns)
@@ -21,7 +19,7 @@ def load_reference_contexts(path: Path) -> pd.DataFrame:
         raise ValueError("Reference contexts file is missing: " + ", ".join(sorted(missing)))
     return dataframe
 
-
+# gets the unique context values used as UI options
 def distinct_context_values(dataframe: pd.DataFrame, column: str) -> list[str]:
     """Return individual normalized UI options, including values stored as tag lists."""
     values: set[str] = set()
@@ -32,6 +30,6 @@ def distinct_context_values(dataframe: pd.DataFrame, column: str) -> list[str]:
                 values.add(value)
     return sorted(values, key=str.casefold)
 
-
+# combines multiple selected values into a single string of expected format
 def join_multiselect(values: list[str]) -> str:
     return "; ".join(values)
