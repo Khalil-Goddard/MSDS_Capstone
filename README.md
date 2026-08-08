@@ -8,7 +8,7 @@
 - `data/combined_survey_data.csv`: master survey dataset.
 - `data/reference_survey_contexts.csv`: curated reference survey contexts and UI option source.
 
-## Run locally
+## To Run the Streamlit App locally
 
 ```bash
 python -m pip install -r requirements.txt
