@@ -1,0 +1,126 @@
+import pandas as pd
+
+# Load the three datasets
+survey_definition = pd.read_excel("survey_definition.xlsx")
+survey_stoplight = pd.read_excel("survey_stoplight.xlsx")
+survey_stoplight_color = pd.read_excel("survey__stoplight_color.xlsx")
+
+
+# ---------------------------------------------------------
+# 1. Prepare survey_definition
+# ---------------------------------------------------------
+
+# Rename id so it is clear what it represents
+survey_definition = survey_definition.rename(
+    columns={"id": "survey_definition_id"}
+)
+
+
+# ---------------------------------------------------------
+# 2. Prepare survey_stoplight
+# ---------------------------------------------------------
+
+# Rename id because this is the ID used by survey_stoplight_color
+survey_stoplight = survey_stoplight.rename(
+    columns={"id": "survey_stoplight_id"}
+)
+
+
+# ---------------------------------------------------------
+# 3. Prepare survey_stoplight_color
+# ---------------------------------------------------------
+
+# Convert color values to labels
+# 1 = Red, 2 = Yellow, 3 = Green
+color_map = {
+    1: "red",
+    2: "yellow",
+    3: "green",
+    "1": "red",
+    "2": "yellow",
+    "3": "green"
+}
+
+survey_stoplight_color["color"] = (
+    survey_stoplight_color["value"].map(color_map)
+)
+
+
+# Pivot color descriptions so each indicator has
+# red, yellow, and green on the same row
+color_descriptions = survey_stoplight_color.pivot_table(
+    index="survey_stoplight_id",
+    columns="color",
+    values="description",
+    aggfunc="first"
+).reset_index()
+
+color_descriptions = color_descriptions.rename(
+    columns={
+        "red": "red_description",
+        "yellow": "yellow_description",
+        "green": "green_description"
+    }
+)
+
+
+# Pivot image URLs as well
+color_urls = survey_stoplight_color.pivot_table(
+    index="survey_stoplight_id",
+    columns="color",
+    values="url",
+    aggfunc="first"
+).reset_index()
+
+color_urls = color_urls.rename(
+    columns={
+        "red": "red_url",
+        "yellow": "yellow_url",
+        "green": "green_url"
+    }
+)
+
+
+# Combine color descriptions and URLs
+colors_combined = color_descriptions.merge(
+    color_urls,
+    on="survey_stoplight_id",
+    how="left"
+)
+
+
+# ---------------------------------------------------------
+# 4. Combine survey_stoplight with survey_definition
+# ---------------------------------------------------------
+
+combined_data = survey_stoplight.merge(
+    survey_definition,
+    on="survey_definition_id",
+    how="left",
+    suffixes=("_stoplight", "_survey")
+)
+
+
+# ---------------------------------------------------------
+# 5. Add red, yellow, and green criteria
+# ---------------------------------------------------------
+
+combined_data = combined_data.merge(
+    colors_combined,
+    on="survey_stoplight_id",
+    how="left"
+)
+
+
+# ---------------------------------------------------------
+# 6. Save combined dataset
+# ---------------------------------------------------------
+
+combined_data.to_excel(
+    "combined_survey_data.xlsx",
+    index=False
+)
+
+print("Combined dataset created successfully.")
+print("Rows:", len(combined_data))
+print("Columns:", len(combined_data.columns))

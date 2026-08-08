@@ -7,6 +7,8 @@
 - `services/`: upload validation, context-option handling, model invocation, merge, and export helpers.
 - `data/combined_survey_data.csv`: master survey dataset.
 - `data/reference_survey_contexts.csv`: curated reference survey contexts and UI option source.
+- `Survey_Adaptation/`: upload original Survey_Adaptation_Engine development
+- `services/`: upload Masterfile and data merger
 
 ## To Run the Streamlit App locally
 

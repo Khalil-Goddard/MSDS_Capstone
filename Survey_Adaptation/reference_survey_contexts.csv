@@ -1,0 +1,28 @@
+survey_definition_id,country,language,population_type,focus,organization_type,comparison_group,notes
+92,South Africa,English,general,environment,NGO,country_language;environmental,"Green Stoplight; sponsor identified South Africa, although the raw country code differs"
+325,United States,English,general,general wellbeing,NGO,country_language;ngo,Bridge to 100
+96,Uzbekistan,Russian,general,general wellbeing,NGO,vatandosh;country_language,Vatandosh Russian version
+97,Uzbekistan,Uzbek,general,general wellbeing,NGO,vatandosh;country_language,Vatandosh Uzbek version
+156,Madagascar,Malagasy,families,general wellbeing,NGO,unbound_antsirabe;country_language,Unbound Antsirabe Malagasy version
+157,Madagascar,English,families,general wellbeing,NGO,unbound_antsirabe;country_language,Unbound Antsirabe English version
+302,Argentina,Spanish,youth;sports participants,youth development;sports,NGO,youth;population,Fútbol Sin Pobreza
+120,United States,English,youth;young people,general wellbeing;youth development,NGO,youth;population,Dallas Lights Youth Survey
+71,India,English,women;entrepreneurs,gender;finance;business,NGO,gender;population,SEWA
+339,Guatemala,Spanish,older adults;elderly,general wellbeing;health,NGO,older_adults;population,Adultos Mayores Guatemala
+295,South Africa,English,migrant workers;migrants,migration;worker wellbeing,NGO,migration;population,Migration HP Stoplight
+221,Ecuador,Spanish,small-scale agricultural producers;farmers,agriculture;business,NGO,small_producers;population,Semáforo para Pequeños Productores
+90,Paraguay,Spanish,general,environment,NGO,environmental;focus,Semáforo Ambiental
+31,Paraguay,Spanish,parents,education,educational organization,educational;population;focus,Semáforo Educativo de Padres
+40,Paraguay,Spanish,teachers,education,educational organization,educational;population;focus,Semáforo Educativo de Docentes
+258,Paraguay,Spanish,school directors;directors,education,educational organization,educational;population;focus,Semáforo Educativo de Directores
+259,Paraguay,Spanish,students,education,educational organization,educational;population;focus,Semáforo Educativo de Estudiantes
+152,Singapore,English,women,gender;employment,NGO,gender;population,Daughters Of Tomorrow
+215,Honduras,Spanish,clients;families,finance;general wellbeing,microfinance,microfinance;organization,ODEF Honduras
+314,Brazil,Portuguese,clients;families,finance;general wellbeing,microfinance,microfinance;organization,Despertar Banco da Família
+377,Nicaragua,Spanish,clients;families,finance;general wellbeing,microfinance,microfinance;organization,MiCredito Nicaragua
+323,Brazil,Portuguese,employees;families,business;employee wellbeing,company,companies;organization,Polaris Rede de Empresas 2.0
+290,United States,English,employees;families,business;employee wellbeing,company,companies;organization,Thrive Lights Zachry Corporation
+203,Brazil,Portuguese,employees;families,business;employee wellbeing,company,companies;organization,Rede de Empresas
+376,Guatemala,Spanish,employees;families,business;employee wellbeing,company,companies;organization,UFM Proyecto Familia Tenenbaum
+160,Tanzania,Swahili,families,general wellbeing,NGO,unbound;ngo;organization,Unbound Dar es Salaam
+345,Colombia,Spanish,employees;families,business;general wellbeing,NGO,ngo;organization,Fundación Carvajal EPOCA
